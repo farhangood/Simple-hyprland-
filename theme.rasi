@@ -1,0 +1,6 @@
+* {
+  background: #1e1e2e;
+  border-color: #89b4fa;
+  border-radius: 6px;
+  padding: 5px;
+}
