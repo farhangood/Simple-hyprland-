@@ -1,30 +1,17 @@
 #!/bin/bash
 
-echo "🔧 Installing all required packages for Minimal Hyprland..."
+echo "🛠 Menginstall paket yang dibutuhkan..."
+sudo pacman -S --noconfirm hyprland kitty rofi swww
 
-# Pastikan sudah update sistem
-sudo pacman -Syu --noconfirm
-
-# Install paket utama
-sudo pacman -S --noconfirm hyprland kitty waybar rofi swww \
-    thunar networkmanager network-manager-applet blueman \
-    pipewire wireplumber pipewire-audio \
-    polkit-kde-agent grim slurp wl-clipboard \
-    ttf-jetbrains-mono-nerd xdg-utils xdg-user-dirs
-
-# Enable layanan penting
-sudo systemctl enable NetworkManager
-sudo systemctl enable bluetooth
-
-# Buat folder config
+echo "📁 Menyiapkan direktori konfigurasi..."
 mkdir -p ~/.config/hypr
-mkdir -p ~/.config/waybar
+mkdir -p ~/.config/kitty
 mkdir -p ~/.config/rofi
 
-# Salin config
-cp -r .config/hypr/* ~/.config/hypr/
-cp -r .config/waybar/* ~/.config/waybar/
-cp -r .config/rofi/* ~/.config/rofi/
+echo "📂 Menyalin file konfigurasi..."
+cp hyprland.conf ~/.config/hypr/hyprland.conf
+cp kitty.conf ~/.config/kitty/kitty.conf
+cp config.rasi ~/.config/rofi/config.rasi
+cp theme.rasi ~/.config/rofi/theme.rasi
 
-echo "✅ Semua config dan paket sudah diinstall!"
-echo "➡️ Jalankan Hyprland lalu tekan SUPER+SPACE untuk toggle floating."
+echo "✅ Selesai! Silakan restart Hyprland"
